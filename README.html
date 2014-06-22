@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Scheduler Application"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-06-22T23:06+0000"/>
+<meta name="generated" content="2014-06-22T23:29+0000"/>
 <meta name="author" content="Ander"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -128,8 +128,17 @@ computer via the web (ie. delivery (laundry, beer, groceries)
 <li><a href="#sec-1">1 Basic concept</a></li>
 <li><a href="#sec-2">2 Application skeleton BASICS</a>
 <ul>
-<li><a href="#sec-2-1">2.1 the following has now been defaulted into</a></li>
-<li><a href="#sec-2-2">2.2 git</a></li>
+<li><a href="#sec-2-1">2.1 the following has now been defaulted into</a>
+<ul>
+<li><a href="#sec-2-1-1">2.1.1 Create the default skeletal application</a></li>
+<li><a href="#sec-2-1-2">2.1.2 Set up Git and Heroku</a>
+<ul>
+<li><a href="#sec-2-1-2-1">2.1.2.1 Git</a></li>
+<li><a href="#sec-2-1-2-2">2.1.2.2 Heroku</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -163,6 +172,14 @@ computer via the web (ie. delivery (laundry, beer, groceries)
 <pre class="example">
 ~/bin/rails-new.sh/~/RAILS-dev/DEFAULT-NEW-APP.sh
 </pre>
+
+
+
+</div>
+
+<div id="outline-container-2-1-1" class="outline-4">
+<h4 id="sec-2-1-1"><span class="section-number-4">2.1.1</span> Create the default skeletal application</h4>
+<div class="outline-text-4" id="text-2-1-1">
 
 
 <ul>
@@ -219,14 +236,21 @@ bundle install --without production
 </ul>
 
 
-
 </div>
 
 </div>
 
-<div id="outline-container-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> git</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-2-1-2" class="outline-4">
+<h4 id="sec-2-1-2"><span class="section-number-4">2.1.2</span> Set up Git and Heroku</h4>
+<div class="outline-text-4" id="text-2-1-2">
+
+
+
+</div>
+
+<div id="outline-container-2-1-2-1" class="outline-5">
+<h5 id="sec-2-1-2-1"><span class="section-number-5">2.1.2.1</span> Git</h5>
+<div class="outline-text-5" id="text-2-1-2-1">
 
 
 <ul>
@@ -251,11 +275,59 @@ echo "Procfile" &gt;&gt; .gitignore
 
 <pre class="example">
 git add .
+git commit -am "initial commit"
+</pre>
+
+
+</li>
+<li><code>[X]</code> add the origin
+
+<pre class="example">
+git remote add origin https://github.com/son1112/scheduler.git
+</pre>
+
+
+</li>
+<li><code>[X]</code> initial push
+
+<pre class="example">
+git push -u origin master
 </pre>
 
 </li>
 </ul>
 
+
+</div>
+
+</div>
+
+<div id="outline-container-2-1-2-2" class="outline-5">
+<h5 id="sec-2-1-2-2"><span class="section-number-5">2.1.2.2</span> Heroku</h5>
+<div class="outline-text-5" id="text-2-1-2-2">
+
+
+<ul>
+<li><code>[&nbsp;]</code> Create and push a new heroku app
+
+<pre class="example">
+heroku create
+git push heroku master
+</pre>
+
+
+</li>
+<li><code>[&nbsp;]</code> Rename the heroku app
+
+<pre class="example">
+heroku rename gensched
+</pre>
+
+</li>
+</ul>
+
+</div>
+</div>
 </div>
 </div>
 </div>

@@ -13,35 +13,38 @@ computer via the web (ie. delivery (laundry, beer, groceries)
 
    : ~/bin/rails-new.sh/~/RAILS-dev/DEFAULT-NEW-APP.sh
 
-- [X] create scheduler application
+*** Create the default skeletal application
 
-  : rails new scheduler
+   - [X] create scheduler application
+
+     : rails new scheduler
   
-- [X] update README
+   - [X] update README
 
-  : rm README.rdoc
-  : touch README.org
+     : rm README.rdoc
+     : touch README.org
 
-- [X] rename application.css to application.css.scss
+   - [X] rename application.css to application.css.scss
 
-  : cd app/assets/stylesheets
-  : mv application.css application.css.scss
+     : cd app/assets/stylesheets
+     : mv application.css application.css.scss
 
-- [X] test the skeletal application
+   - [X] test the skeletal application
 
-  : rails s
+     : rails s
 
-- [X] update the Gemfile
+   - [X] update the Gemfile
 
-  : cat ~/RAILS-dev/DEFAULT-Gemfile > Gemfile
+     : cat ~/RAILS-dev/DEFAULT-Gemfile > Gemfile
 
-- [X] update the bundle
+   - [X] update the bundle
 
-  : bundle update
-  : bundle install --without production
+     : bundle update
+     : bundle install --without production
 
+*** Set up Git and Heroku
 
-** git
+**** Git
 
    - [X] initialize git repo
 
@@ -55,3 +58,23 @@ computer via the web (ie. delivery (laundry, beer, groceries)
    - [X] initial stage and commit of all files
 
      : git add .
+     : git commit -am "initial commit"
+
+   - [X] add the origin
+
+     : git remote add origin https://github.com/son1112/scheduler.git
+
+   - [X] initial push
+
+     : git push -u origin master
+
+**** Heroku
+
+     - [ ] Create and push a new heroku app
+
+       : heroku create
+       : git push heroku master
+       
+     - [ ] Rename the heroku app
+
+       : heroku rename gensched
