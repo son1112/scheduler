@@ -1,0 +1,57 @@
+Scheduler Application
+
+Create a generic application for scheduling a service from a user's phone or 
+computer via the web (ie. delivery (laundry, beer, groceries)
+
+* Basic concept
+
+  
+
+* Application skeleton BASICS
+
+** the following has now been defaulted into
+
+   : ~/bin/rails-new.sh/~/RAILS-dev/DEFAULT-NEW-APP.sh
+
+- [X] create scheduler application
+
+  : rails new scheduler
+  
+- [X] update README
+
+  : rm README.rdoc
+  : touch README.org
+
+- [X] rename application.css to application.css.scss
+
+  : cd app/assets/stylesheets
+  : mv application.css application.css.scss
+
+- [X] test the skeletal application
+
+  : rails s
+
+- [X] update the Gemfile
+
+  : cat ~/RAILS-dev/DEFAULT-Gemfile > Gemfile
+
+- [X] update the bundle
+
+  : bundle update
+  : bundle install --without production
+
+
+** git
+
+   - [X] initialize git repo
+
+     : git init
+
+   - [X] update .gitignore
+
+     : echo ".env" >> .gitignore
+     : echo "Procfile" >> .gitignore
+
+   - [X] initial stage and commit of all files
+
+     : git add .
