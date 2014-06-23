@@ -1,4 +1,4 @@
-Scheduler Application
+*Scheduler Application*
 
 Create a generic application for scheduling a service from a user's phone or 
 computer via the web (ie. delivery (laundry, beer, groceries)
@@ -25,6 +25,7 @@ computer via the web (ie. delivery (laundry, beer, groceries)
 *** Admin
 
 *** Commercial Exchange   
+
 
 ** View
 
@@ -77,7 +78,14 @@ computer via the web (ie. delivery (laundry, beer, groceries)
 
      - [ ] css background images 
 
+
 *** Views
+
+    - [X] add viewport
+
+      [[./app/views/layouts/application.html.erb][application.html.erb]]
+
+      : <meta name="viewport" content="width=device-width, intial-scale=1.0">
 
 **** Layouts
 
@@ -87,6 +95,8 @@ computer via the web (ie. delivery (laundry, beer, groceries)
 ** Control
 
 *** Routes
+
+    - [ ] create root path
 
 *** Controllers   
 
@@ -125,9 +135,15 @@ computer via the web (ie. delivery (laundry, beer, groceries)
      : cd app/assets/stylesheets
      : mv application.css application.css.scss
 
-   - [X] test the skeletal application
+   - [X] Test the skeletal application
+
+     - [X] Start the Rails server
 
      : rails s
+     
+     - [X] open your browser to localhost, port 3000
+
+       : localhost:3000
 
    - [X] update the Gemfile
 
