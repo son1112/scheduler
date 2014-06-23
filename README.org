@@ -11,6 +11,42 @@ computer via the web (ie. delivery (laundry, beer, groceries)
   to admin. When approved, a confirmation email is returned and the service is 
   planned for the appropriate time on the business side.
 
+
+* ModelViewControl
+
+** Model
+
+** View
+
+*** Bootstrap
+    
+    - [ ] create custom bootstrap stylesheet
+      
+      : echo "@import 'bootsrap';" > app/assets/stylesheets/bootstrap_and_customization
+
+*** Assets
+
+**** Stylesheets
+
+**** Javascripts
+
+**** Images   
+
+
+*** Views
+
+**** Layouts
+
+**** Partials
+
+
+** Control
+
+*** Routes
+
+*** Controllers   
+
+
 * Application skeleton BASICS
 
 ** the following has now been defaulted into
@@ -26,6 +62,7 @@ computer via the web (ie. delivery (laundry, beer, groceries)
    - [X] update README
 
      : rm README.rdoc
+     : ln -s $HOME/bin/rails-new.sh rails-new.sh
      : touch README.org
 
    - [X] rename application.css to application.css.scss
