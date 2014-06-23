@@ -122,7 +122,104 @@
 
 *** Shift    
 
-    - [ ] Generate Shift scaffold
+**** prebuilt options
+
+     While I am very interested in building this from scratch, I knew that there
+     must be something already available as a gem. Enter [[https://github.com/bokmann/fullcalendar-rails][fullcalendar-rails]]:
+
+     Let's give it a shot.
+
+***** Install
+
+     - [X] install
+
+       : gem 'fullcalendar-rails
+       : bundle
+
+     - [X] require in the appropriate places
+
+       [[./app/assets/stylesheets/application.css.scss]]
+
+       : *= require fullcalendar
+
+       [[./app/assets/javascripts/application.js]]
+
+       : *= require fullcalendar.print
+
+     - [ ] You can also include the fullcalendar.print file in your css manifest:
+
+	 but as Ray Zane pointed out in issue #11, this will cause a problem if 
+	 you try to change the colors of events.
+
+	 An ideal solution, if you need a print stylesheet, is to create an 
+	 application-print.css.scss file and include this (and other 
+         print-related css) in it. You'll then need to add it to the precompile
+	 array in [[./config/application.rb]]:
+
+	 : config.assets.precompile += ['application-print.css']
+
+	 and then in your layouts where you need it, add:
+
+	 : <%= stylesheet_link_tag "application-print", :media => "print" %>
+
+	 While it's not needed for this library, the original javascript 
+         library's author also includes an adapter for integrating
+	 Google calendars as an event source:
+	 
+	 //= require gcal
+	 
+
+     
+
+***** Usage
+
+      http://arshaw.com/fullcalendar/
+
+      - [X] The following script code should be placed in the head of your page
+
+	in application page or specific view?
+	Trying in the head of [[./app/views/layouts/application.html.erb]]
+
+	: <script>
+        :   $(document).ready(function(){
+        :    $('#calendar').fullCalendar({
+	:       // put your options and callbacks here
+        :     })
+        :   });
+        : </script>
+
+      - [X] Relies on there being an element with an id of "calendar" in the 
+	body of your page. The calendar will be placed /inside/ this div:
+
+	: <div id='calendar'></div>
+
+	Attempting this at [[./app/views/pages/test.html.erb]]
+
+	After restarting the server, it works!
+
+      - [ ] To display events:
+
+	- [ ] Using Google Calendar
+
+	  http://arshaw.com/fullcalendar/docs/google_calendar/
+
+	  FullCalendar can display events from a public Google Calendar. It can
+	  serve as a backend that manages and persistently stores event data 
+          (a feature that FullCalendar currently lacks).
+	  
+	  So, this may not be what we want. It would be nice if the scheduled 
+          events could just be placed on a Google calendar...
+
+	- [ ] Using a standard JavaScript object that FullCalendar uses
+	  to store information about a calendar event.
+
+	  http://arshaw.com/fullcalendar/docs/event_data/
+
+	  
+
+**** Generation
+
+    - [X] Generate Shift scaffold
 
       : rails g scaffold Shift index pickup:string dropoff:string
 
@@ -135,7 +232,13 @@
      | example |           3 | Time.now.to_f.to_s       | Time.at(Time.now+60).to_f.to_s |
      |         |           7 | Time.at(60*30).to_f.to_s | Time.at(90000000).to_f.to_s    |
 
+
      - [ ] other attributes?
+
+       [[./extra/sandbox/docs/gensched08077.png]]
+
+       For user friendliness, needs to be able to be selected by day/date and 
+       then time
 
      - [ ] use .to_f method to retain fractions of a second
 

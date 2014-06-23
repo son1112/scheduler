@@ -1,37 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<meta charset="utf-8"/>
 <title>A Generic Scheduler</title>
+<!-- 2014-06-23 Mon 22:17 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
 
-<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.5.0/css/reveal.min.css"/>
-<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.5.0/css/theme/default.css" id="theme"/>
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
 
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-    if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = 'http://cdn.jsdelivr.net/reveal.js/2.5.0/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-    }
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
 </script>
 </head>
 <body>
-<div class="reveal">
-<div class="slides">
-<section>
-<h1>A Generic Scheduler</h1>
-<h2></h2>
-<h2><a href="mailto:"></a></h2>
-<h2></h2></section>
+<div id="content">
+<h1 class="title">A Generic Scheduler</h1>
 
-<section>
-<section id="sec-1" >
-
-<h2>Scheduler Application</h2>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Scheduler Application</h2>
+<div class="outline-text-2" id="text-1">
 <p>
 <a href="http://gensched.herokuapp.com">http://gensched.herokuapp.com</a>
 </p>
@@ -40,14 +149,13 @@
 Create a generic application for scheduling a service from a user's phone or 
 computer via the web (ie. delivery (laundry, beer, groceries)
 </p>
-</section>
+</div>
+</div>
 
 
-</section>
-<section>
-<section id="sec-2" >
-
-<h2>Basic concept</h2>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Basic concept</h2>
+<div class="outline-text-2" id="text-2">
 <p>
 A user, from the web (via mobile or desktop/laptop), visits the application 
 site for a specific service (laundry pickup/delivery), selects a 
@@ -55,13 +163,12 @@ service and a date&amp;time. A request for the service/time is emailed
 to admin. When approved, a confirmation email is returned and the service is 
 planned for the appropriate time on the business side.
 </p>
-</section>
+</div>
+</div>
 
-</section>
-<section>
-<section id="sec-3" >
-
-<h2>ModelViewControl</h2>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">ModelViewControl</h2>
+<div class="outline-text-2" id="text-3">
 <p>
 <a href="http://guides.rubyonrails.org/active_record_basics.html">Users</a> <a href="http://guides.rubyonrails.org/action_controller_overview.html">order and schedule</a> services through a web-based <a href="http://guides.rubyonrails.org/action_view_overview.html">application</a>. 
 </p>
@@ -71,11 +178,11 @@ This application displays a calendar and scheduling information along with
 basic operation information. One or more datetimes are selected from a 
 controlled array of available times for service to be rendered.
 </p>
+</div>
 
-</section>
-<section id="sec-3-1" >
-
-<h3>Model</h3>
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">Model</h3>
+<div class="outline-text-3" id="text-3-1">
 <p>
 Each <b>page</b> will serve as a node for site structure.
 </p>
@@ -87,13 +194,13 @@ A <b>user</b> will have many <b>shifts</b>, associated by id when scheduling req
 <p>
 <b>Admin</b> users will have access to greenlighting of scheduling requests.
 </p>
+</div>
 
 
 
-</section>
-<section id="sec-3-1-1" >
-
-<h4>Page</h4>
+<div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1">Page</h4>
+<div class="outline-text-4" id="text-3-1-1">
 <ul class="org-ul">
 <li><code>[X]</code> generate page scaffolding
 
@@ -102,19 +209,23 @@ rails g scaffold Page index
 </pre>
 </li>
 </ul>
+</div>
 
-<ul class="org-ul"><li class="fragment none">Additional attributes/columns<br/><ul class="org-ul">
+<ul class="org-ul"><li>Additional attributes/columns<br  /><div class="outline-text-5" id="text-3-1-1-1">
+<ul class="org-ul">
 <li><code>[&#xa0;]</code> index: string
 </li>
 </ul>
+</div>
 </li></ul>
+</div>
 
 
-</section>
-<section id="sec-3-1-2" >
-
-<h4>User</h4>
-<ul class="org-ul"><li class="fragment none">Devise<br/><ul class="org-ul">
+<div id="outline-container-sec-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2">User</h4>
+<div class="outline-text-4" id="text-3-1-2">
+</div><ul class="org-ul"><li>Devise<br  /><div class="outline-text-5" id="text-3-1-2-1">
+<ul class="org-ul">
 <li><code>[-]</code> Install <a href="https://github.com/plataformatec/devise">Devise</a>
 
 <ul class="org-ul">
@@ -226,21 +337,185 @@ rake db:migrate
 </pre>
 </li>
 </ul>
+</div>
 </li>
 
 
 
-<li class="fragment none">Admin<br/><ul class="org-ul">
+<li>Admin<br  /><div class="outline-text-5" id="text-3-1-2-2">
+<ul class="org-ul">
 <li><code>[&#xa0;]</code> create a migration to add admin boolean to User model
 </li>
 </ul>
+</div>
 </li></ul>
+</div>
 
 
-</section>
-<section id="sec-3-1-3" >
+<div id="outline-container-sec-3-1-3" class="outline-4">
+<h4 id="sec-3-1-3">Shift</h4>
+<div class="outline-text-4" id="text-3-1-3">
+</div><ul class="org-ul"><li>prebuilt options<br  /><div class="outline-text-5" id="text-3-1-3-1">
+<p>
+While I am very interested in building this from scratch, I knew that there
+must be something already available as a gem. Enter <a href="https://github.com/bokmann/fullcalendar-rails">fullcalendar-rails</a>:
+</p>
 
-<h4>Shift</h4>
+<p>
+Let's give it a shot.
+</p>
+</div>
+
+<ul class="org-ul"><li>Install<br  /><div class="outline-text-6" id="text-3-1-3-1-1">
+<ul class="org-ul">
+<li><code>[X]</code> install
+
+<pre class="example">
+gem 'fullcalendar-rails
+bundle
+</pre>
+</li>
+
+<li><code>[X]</code> require in the appropriate places
+
+<p>
+<a href="./app/assets/stylesheets/application.css.scss">./app/assets/stylesheets/application.css.scss</a>
+</p>
+
+<pre class="example">
+*= require fullcalendar
+</pre>
+
+<p>
+<a href="./app/assets/javascripts/application.js">./app/assets/javascripts/application.js</a>
+</p>
+
+<pre class="example">
+*= require fullcalendar.print
+</pre>
+</li>
+
+<li><code>[&#xa0;]</code> You can also include the fullcalendar.print file in your css manifest:
+
+<p>
+but as Ray Zane pointed out in issue #11, this will cause a problem if 
+you try to change the colors of events.
+</p>
+
+<p>
+An ideal solution, if you need a print stylesheet, is to create an 
+application-print.css.scss file and include this (and other 
+print-related css) in it. You'll then need to add it to the precompile
+array in <a href="./config/application.rb">./config/application.rb</a>:
+</p>
+
+<pre class="example">
+config.assets.precompile += ['application-print.css']
+</pre>
+
+<p>
+and then in your layouts where you need it, add:
+</p>
+
+<pre class="example">
+&lt;%= stylesheet_link_tag "application-print", :media =&gt; "print" %&gt;
+</pre>
+
+<p>
+While it's not needed for this library, the original javascript 
+library's author also includes an adapter for integrating
+Google calendars as an event source:
+</p>
+
+<p>
+//= require gcal
+</p>
+</li>
+</ul>
+</div>
+</li>
+
+
+
+
+<li>Usage<br  /><div class="outline-text-6" id="text-3-1-3-1-2">
+<p>
+<a href="http://arshaw.com/fullcalendar/">http://arshaw.com/fullcalendar/</a>
+</p>
+
+<ul class="org-ul">
+<li><code>[X]</code> The following script code should be placed in the head of your page
+
+<p>
+in application page or specific view?
+Trying in the head of <a href="./app/views/layouts/application.html.erb">./app/views/layouts/application.html.erb</a>
+</p>
+
+<pre class="example">
+&lt;script&gt;
+  $(document).ready(function(){
+   $('#calendar').fullCalendar({
+      // put your options and callbacks here
+    })
+  });
+&lt;/script&gt;
+</pre>
+</li>
+
+<li><code>[X]</code> Relies on there being an element with an id of "calendar" in the 
+body of your page. The calendar will be placed <i>inside</i> this div:
+
+<pre class="example">
+&lt;div id='calendar'&gt;&lt;/div&gt;
+</pre>
+
+<p>
+Attempting this at <a href="./app/views/pages/test.html.erb">./app/views/pages/test.html.erb</a>
+</p>
+
+<p>
+After restarting the server, it works!
+</p>
+</li>
+
+<li><code>[&#xa0;]</code> To display events:
+
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> Using Google Calendar
+
+<p>
+<a href="http://arshaw.com/fullcalendar/docs/google_calendar/">http://arshaw.com/fullcalendar/docs/google_calendar/</a>
+</p>
+
+<p>
+FullCalendar can display events from a public Google Calendar. It can
+serve as a backend that manages and persistently stores event data 
+(a feature that FullCalendar currently lacks).
+</p>
+
+<p>
+So, this may not be what we want. It would be nice if the scheduled 
+events could just be placed on a Google calendar&#x2026;
+</p>
+</li>
+
+<li><code>[&#xa0;]</code> Using a standard JavaScript object that FullCalendar uses
+to store information about a calendar event.
+
+<p>
+<a href="http://arshaw.com/fullcalendar/docs/event_data/">http://arshaw.com/fullcalendar/docs/event_data/</a>
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</li></ul>
+</li>
+
+
+
+<li>Generation<br  /><div class="outline-text-5" id="text-3-1-3-2">
 <ul class="org-ul">
 <li><code>[X]</code> Generate Shift scaffold
 
@@ -249,8 +524,11 @@ rails g scaffold Shift index pickup:string dropoff:string
 </pre>
 </li>
 </ul>
+</div>
+</li>
 
-<ul class="org-ul"><li class="fragment none">table<br/><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<li>table<br  /><div class="outline-text-5" id="text-3-1-3-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -295,8 +573,20 @@ rails g scaffold Shift index pickup:string dropoff:string
 </tbody>
 </table>
 
+
 <ul class="org-ul">
 <li><code>[&#xa0;]</code> other attributes?
+
+
+<div class="figure">
+<p><img src="./extra/sandbox/docs/gensched08077.png" alt="gensched08077.png" />
+</p>
+</div>
+
+<p>
+For user friendliness, needs to be able to be selected by day/date and 
+then time
+</p>
 </li>
 
 <li><code>[&#xa0;]</code> use .to<sub>f</sub> method to retain fractions of a second
@@ -343,21 +633,22 @@ Time.parse('2014-06-23 20:02:16 +0000') =&gt; 2014-06-23 20:02:16 +0000
 </ul>
 </li>
 </ul>
+</div>
 </li></ul>
+</div>
 
 
 
-</section>
-<section id="sec-3-1-4" >
+<div id="outline-container-sec-3-1-4" class="outline-4">
+<h4 id="sec-3-1-4">Commercial Exchange</h4>
+</div>
 
-<h4>Commercial Exchange</h4>
 
-
-</section>
-<section id="sec-3-1-5" >
-
-<h4>Rails Generation</h4>
-<ul class="org-ul"><li class="fragment none">Scaffolding<br/><ul class="org-ul">
+<div id="outline-container-sec-3-1-5" class="outline-4">
+<h4 id="sec-3-1-5">Rails Generation</h4>
+<div class="outline-text-4" id="text-3-1-5">
+</div><ul class="org-ul"><li>Scaffolding<br  /><div class="outline-text-5" id="text-3-1-5-1">
+<ul class="org-ul">
 <li><code>[X]</code> Disable scaffold stylesheet creation 
 
 <p>
@@ -388,30 +679,32 @@ rake db:migrate
 </pre>
 </li>
 </ul>
+</div>
 </li>
 
 
-<li class="fragment none">Generating a Model<br/></li></ul>
+<li>Generating a Model<br  /></li></ul>
+</div>
 
 
-</section>
-<section id="sec-3-1-6" >
-
-<h4>Service</h4>
+<div id="outline-container-sec-3-1-6" class="outline-4">
+<h4 id="sec-3-1-6">Service</h4>
+<div class="outline-text-4" id="text-3-1-6">
 <p>
 For now, I think it would make sense to look at it simply, accounting for a
 single service that can be scheduled.
 </p>
+</div>
+</div>
+</div>
 
 
-</section>
-<section id="sec-3-2" >
-
-<h3>View</h3>
-</section>
-<section id="sec-3-2-1" >
-
-<h4>Skrollr</h4>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">View</h3>
+<div class="outline-text-3" id="text-3-2">
+</div><div id="outline-container-sec-3-2-1" class="outline-4">
+<h4 id="sec-3-2-1">Skrollr</h4>
+<div class="outline-text-4" id="text-3-2-1">
 <ul class="org-ul">
 <li><code>[&#xa0;]</code> add skrollr script
 </li>
@@ -419,12 +712,13 @@ single service that can be scheduled.
 <li><code>[&#xa0;]</code> application.js
 </li>
 </ul>
+</div>
+</div>
 
 
-</section>
-<section id="sec-3-2-2" >
-
-<h4>Bootstrap-sass</h4>
+<div id="outline-container-sec-3-2-2" class="outline-4">
+<h4 id="sec-3-2-2">Bootstrap-sass</h4>
+<div class="outline-text-4" id="text-3-2-2">
 <ul class="org-ul">
 <li><code>[X]</code> Create custom bootstrap stylesheet
 
@@ -475,15 +769,17 @@ $phill-grn: #3f8000;
 </pre>
 </li>
 </ul>
+</div>
+</div>
 
 
-</section>
-<section id="sec-3-2-3" >
+<div id="outline-container-sec-3-2-3" class="outline-4">
+<h4 id="sec-3-2-3">Assets</h4>
+<div class="outline-text-4" id="text-3-2-3">
+</div><ul class="org-ul"><li>Stylesheets<br  /></li>
 
-<h4>Assets</h4>
-<ul class="org-ul"><li class="fragment none">Stylesheets<br/></li>
-
-<li class="fragment none">Javascripts<br/><ul class="org-ul">
+<li>Javascripts<br  /><div class="outline-text-5" id="text-3-2-3-2">
+<ul class="org-ul">
 <li><code>[X]</code> Replace turbolinks with jquery-turbolinks
 
 <p>
@@ -512,20 +808,24 @@ app/assets/javascripts/application.js
 </ul>
 </li>
 </ul>
+</div>
 </li>
 
-<li class="fragment none">Images<br/><ul class="org-ul">
+<li>Images<br  /><div class="outline-text-5" id="text-3-2-3-3">
+<ul class="org-ul">
 <li><code>[&#xa0;]</code> css background images 
 </li>
 </ul>
+</div>
 </li></ul>
+</div>
 
 
-</section>
-<section id="sec-3-2-4" >
-
-<h4>Views</h4>
-<ul class="org-ul"><li class="fragment none">Application<br/><p>
+<div id="outline-container-sec-3-2-4" class="outline-4">
+<h4 id="sec-3-2-4">Views</h4>
+<div class="outline-text-4" id="text-3-2-4">
+</div><ul class="org-ul"><li>Application<br  /><div class="outline-text-5" id="text-3-2-4-1">
+<p>
 <a href="./app/views/">./app/views/</a>
 </p>
 
@@ -541,33 +841,38 @@ app/assets/javascripts/application.js
 </pre>
 </li>
 </ul>
+</div>
 </li>
 
-<li class="fragment none">Pages<br/><p>
+<li>Pages<br  /><div class="outline-text-5" id="text-3-2-4-2">
+<p>
 <a href="./app/views/pages/">./app/views/pages/</a>
 </p>
+</div>
 
-<ul class="org-ul"><li class="fragment none">Home<br/><p>
+<ul class="org-ul"><li>Home<br  /><div class="outline-text-6" id="text-3-2-4-2-1">
+<p>
 <a href="./app/views/pages/home.html.erb">./app/views/pages/home.html.erb</a>
 </p>
+</div>
 </li></ul>
 </li>
 
 
 
-<li class="fragment none">Layouts<br/></li>
+<li>Layouts<br  /></li>
 
-<li class="fragment none">Partials<br/></li></ul>
+<li>Partials<br  /></li></ul>
+</div>
+</div>
 
 
-</section>
-<section id="sec-3-3" >
-
-<h3>Control</h3>
-</section>
-<section id="sec-3-3-1" >
-
-<h4>Routes</h4>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">Control</h3>
+<div class="outline-text-3" id="text-3-3">
+</div><div id="outline-container-sec-3-3-1" class="outline-4">
+<h4 id="sec-3-3-1">Routes</h4>
+<div class="outline-text-4" id="text-3-3-1">
 <p>
 <a href="./app/views/">Views Directory</a>
 </p>
@@ -584,12 +889,13 @@ root 'pages#index'
 </pre>
 </li>
 </ul>
+</div>
+</div>
 
 
-</section>
-<section id="sec-3-3-2" >
-
-<h4>Controllers</h4>
+<div id="outline-container-sec-3-3-2" class="outline-4">
+<h4 id="sec-3-3-2">Controllers</h4>
+<div class="outline-text-4" id="text-3-3-2">
 <p>
 <a href="./app/controllers/application_controller.rb">./app/controllers/application_controller.rb</a>
 </p>
@@ -597,64 +903,63 @@ root 'pages#index'
 <p>
 <a href="./app/controllers/pages_controller.rb">./app/controllers/pages_controller.rb</a>
 </p>
-</section>
+</div>
+</div>
+</div>
+</div>
 
 
-</section>
-<section>
-<section id="sec-4" >
-
-<h2>Other required services</h2>
-</section>
-<section id="sec-4-1" >
-
-<h3>Set up a mailer</h3>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Other required services</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">Set up a mailer</h3>
+</div>
 
 
-</section>
-<section id="sec-4-2" >
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2">commerce exchange</h3>
+</div>
+</div>
 
-<h3>commerce exchange</h3>
-</section>
-
-</section>
-<section>
-<section id="sec-5" >
-
-<h2>Application skeleton BASICS</h2>
-</section>
-<section id="sec-5-1" >
-
-<h3>Useful commands</h3>
-</section>
-<section id="sec-5-1-1" >
-
-<h4>Rake</h4>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Application skeleton BASICS</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1">Useful commands</h3>
+<div class="outline-text-3" id="text-5-1">
+</div><div id="outline-container-sec-5-1-1" class="outline-4">
+<h4 id="sec-5-1-1">Rake</h4>
+<div class="outline-text-4" id="text-5-1-1">
 <pre class="example">
 rake routes
 </pre>
+</div>
+</div>
 
 
-</section>
-<section id="sec-5-1-2" >
-
-<h4>Rails</h4>
+<div id="outline-container-sec-5-1-2" class="outline-4">
+<h4 id="sec-5-1-2">Rails</h4>
+<div class="outline-text-4" id="text-5-1-2">
 <pre class="example">
 rails console
 </pre>
+</div>
+</div>
+</div>
 
-</section>
-<section id="sec-5-2" >
-
-<h3>Essential Files</h3>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2">Essential Files</h3>
+<div class="outline-text-3" id="text-5-2">
 <p>
 <a href="./Gemfile">Gemfile</a>
 </p>
+</div>
+</div>
 
-</section>
-<section id="sec-5-3" >
-
-<h3>the following has now been defaulted into</h3>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3">the following has now been defaulted into</h3>
+<div class="outline-text-3" id="text-5-3">
 <p>
 DEV:edit <a href="./rails-new.sh">./rails-new.sh</a>
 </p>
@@ -662,11 +967,11 @@ DEV:edit <a href="./rails-new.sh">./rails-new.sh</a>
 <p>
 <a href="./rails-new">./rails-new</a>
 </p>
+</div>
 
-</section>
-<section id="sec-5-3-1" >
-
-<h4>Create the default skeletal application</h4>
+<div id="outline-container-sec-5-3-1" class="outline-4">
+<h4 id="sec-5-3-1">Create the default skeletal application</h4>
+<div class="outline-text-4" id="text-5-3-1">
 <ul class="org-ul">
 <li><code>[X]</code> create scheduler application
 
@@ -742,12 +1047,14 @@ bundle install --without production
 </pre>
 </li>
 </ul>
+</div>
+</div>
 
-</section>
-<section id="sec-5-3-2" >
-
-<h4>Set up Git and Heroku</h4>
-<ul class="org-ul"><li class="fragment none">Git<br/><ul class="org-ul">
+<div id="outline-container-sec-5-3-2" class="outline-4">
+<h4 id="sec-5-3-2">Set up Git and Heroku</h4>
+<div class="outline-text-4" id="text-5-3-2">
+</div><ul class="org-ul"><li>Git<br  /><div class="outline-text-5" id="text-5-3-2-1">
+<ul class="org-ul">
 <li><code>[X]</code> initialize git repo
 
 <pre class="example">
@@ -785,9 +1092,11 @@ git push -u origin master
 </pre>
 </li>
 </ul>
+</div>
 </li>
 
-<li class="fragment none">Heroku<br/><ul class="org-ul">
+<li>Heroku<br  /><div class="outline-text-5" id="text-5-3-2-2">
+<ul class="org-ul">
 <li><code>[X]</code> Create and push a new heroku app
 
 <pre class="example">
@@ -803,43 +1112,11 @@ heroku rename gensched
 </pre>
 </li>
 </ul>
+</div>
 </li></ul>
-</section>
-</section>
 </div>
 </div>
-
-<script src="http://cdn.jsdelivr.net/reveal.js/2.5.0/lib/js/head.min.js"></script>
-<script src="http://cdn.jsdelivr.net/reveal.js/2.5.0/js/reveal.min.js"></script>
-
-<script>
-// Full list of configuration options available here:
-// https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
-
-controls: true,
-progress: true,
-history: false,
-center: true,
-slideNumber: true,
-rollingLinks: false,
-keyboard: true,
-overview: true,
-
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-transitionSpeed: 'default',
-
-// Optional libraries used to extend on reveal.js
-dependencies: [
- { src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
- { src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
- { src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-]
-});
-</script>
+</div>
+</div>
 </body>
 </html>

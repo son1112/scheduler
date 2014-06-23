@@ -4,6 +4,8 @@
   Schedule your pickup <%= link_to 'here', "#" %>.
 </p>
 
-<p>
-  <%= link_to "Project Documentation Slides", docs_path %>
-</p>
+<ul id="admin-links">
+  Admin Links:
+  <li><%= link_to "Project Documentation Slides", docs_path %></li>
+  <li><%= link_to "Create a new shift", new_shift_path %></li>
+</ul>
