@@ -1,6 +1,8 @@
 #+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/2.5.0/
-#+EMAIL: son@lincolnix.net
-#+OPTIONS: toc:nil
+#+TITLE: A Generic Scheduler
+#+AUTHOR: 
+#+EMAIL: 
+#+OPTIONS: toc:nil num:nil
 
 * Scheduler Application
 

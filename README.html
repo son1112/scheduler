@@ -4,7 +4,6 @@
 <head>
 <meta charset="utf-8"/>
 <title>A Generic Scheduler</title>
-<meta name="author" content="(AnderSon)"/>
 
 <link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.5.0/css/reveal.min.css"/>
 <link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.5.0/css/theme/default.css" id="theme"/>
@@ -25,14 +24,14 @@
 <div class="slides">
 <section>
 <h1>A Generic Scheduler</h1>
-<h2>AnderSon</h2>
-<h2><a href="mailto:son@lincolnix.net">son@lincolnix.net</a></h2>
+<h2></h2>
+<h2><a href="mailto:"></a></h2>
 <h2></h2></section>
 
 <section>
 <section id="sec-1" >
 
-<h2><span class="section-number-2">1</span> Scheduler Application</h2>
+<h2>Scheduler Application</h2>
 <p>
 <a href="http://gensched.herokuapp.com">http://gensched.herokuapp.com</a>
 </p>
@@ -48,7 +47,7 @@ computer via the web (ie. delivery (laundry, beer, groceries)
 <section>
 <section id="sec-2" >
 
-<h2><span class="section-number-2">2</span> Basic concept</h2>
+<h2>Basic concept</h2>
 <p>
 A user, from the web (via mobile or desktop/laptop), visits the application 
 site for a specific service (laundry pickup/delivery), selects a 
@@ -60,7 +59,7 @@ planned for the appropriate time on the business side.
 </section>
 <section id="sec-2-1" >
 
-<h3><span class="section-number-3">2.1</span> Scheme</h3>
+<h3>Scheme</h3>
 </section>
 
 
@@ -69,7 +68,7 @@ planned for the appropriate time on the business side.
 <section>
 <section id="sec-3" >
 
-<h2><span class="section-number-2">3</span> ModelViewControl</h2>
+<h2>ModelViewControl</h2>
 <p>
 <a href="http://guides.rubyonrails.org/active_record_basics.html">Users</a> <a href="http://guides.rubyonrails.org/action_controller_overview.html">order and schedule</a> services through a web-based <a href="http://guides.rubyonrails.org/action_view_overview.html">application</a>. 
 </p>
@@ -83,7 +82,7 @@ controlled array of available times for service to be rendered.
 </section>
 <section id="sec-3-1" >
 
-<h3><span class="section-number-3">3.1</span> Model</h3>
+<h3>Model</h3>
 <p>
 Users/Admin, Services, Times, (Commercial Exchange)?
 </p>
@@ -91,7 +90,7 @@ Users/Admin, Services, Times, (Commercial Exchange)?
 </section>
 <section id="sec-3-1-1" >
 
-<h4><span class="section-number-4">3.1.1</span> Scaffolding</h4>
+<h4>Scaffolding</h4>
 <ul class="org-ul">
 <li><code>[X]</code> Disable scaffold stylesheet creation 
 
@@ -128,12 +127,12 @@ rake db:migrate
 </section>
 <section id="sec-3-1-2" >
 
-<h4><span class="section-number-4">3.1.2</span> Generating a Model</h4>
+<h4>Generating a Model</h4>
 
 </section>
 <section id="sec-3-1-3" >
 
-<h4><span class="section-number-4">3.1.3</span> Pages</h4>
+<h4>Pages</h4>
 <ul class="org-ul">
 <li><code>[&#xa0;]</code> generate page model
 </li>
@@ -144,8 +143,8 @@ rake db:migrate
 </section>
 <section id="sec-3-1-4" >
 
-<h4><span class="section-number-4">3.1.4</span> Users</h4>
-<ol class="org-ol"><li class="fragment none">Devise<br/><ul class="org-ul">
+<h4>Users</h4>
+<ul class="org-ul"><li class="fragment none">Devise<br/><ul class="org-ul">
 <li><code>[-]</code> Install <a href="https://github.com/plataformatec/devise">Devise</a>
 
 <ul class="org-ul">
@@ -257,37 +256,37 @@ rake db:migrate
 </pre>
 </li>
 </ul>
-</li></ol>
+</li></ul>
 
 
 
 </section>
 <section id="sec-3-1-5" >
 
-<h4><span class="section-number-4">3.1.5</span> Admin</h4>
+<h4>Admin</h4>
 
 </section>
 <section id="sec-3-1-6" >
 
-<h4><span class="section-number-4">3.1.6</span> Service</h4>
+<h4>Service</h4>
 </section>
 <section id="sec-3-1-7" >
 
-<h4><span class="section-number-4">3.1.7</span> Times</h4>
+<h4>Times</h4>
 </section>
 <section id="sec-3-1-8" >
 
-<h4><span class="section-number-4">3.1.8</span> Commercial Exchange</h4>
+<h4>Commercial Exchange</h4>
 
 
 </section>
 <section id="sec-3-2" >
 
-<h3><span class="section-number-3">3.2</span> View</h3>
+<h3>View</h3>
 </section>
 <section id="sec-3-2-1" >
 
-<h4><span class="section-number-4">3.2.1</span> Skrollr</h4>
+<h4>Skrollr</h4>
 <ul class="org-ul">
 <li><code>[&#xa0;]</code> add skrollr script
 </li>
@@ -300,7 +299,7 @@ rake db:migrate
 </section>
 <section id="sec-3-2-2" >
 
-<h4><span class="section-number-4">3.2.2</span> Bootstrap-sass</h4>
+<h4>Bootstrap-sass</h4>
 <ul class="org-ul">
 <li><code>[X]</code> Create custom bootstrap stylesheet
 
@@ -356,8 +355,8 @@ $phill-grn: #3f8000;
 </section>
 <section id="sec-3-2-3" >
 
-<h4><span class="section-number-4">3.2.3</span> Assets</h4>
-<ol class="org-ol"><li class="fragment none">Stylesheets<br/></li>
+<h4>Assets</h4>
+<ul class="org-ul"><li class="fragment none">Stylesheets<br/></li>
 
 <li class="fragment none">Javascripts<br/><ul class="org-ul">
 <li><code>[X]</code> Replace turbolinks with jquery-turbolinks
@@ -394,14 +393,14 @@ app/assets/javascripts/application.js
 <li><code>[&#xa0;]</code> css background images 
 </li>
 </ul>
-</li></ol>
+</li></ul>
 
 
 </section>
 <section id="sec-3-2-4" >
 
-<h4><span class="section-number-4">3.2.4</span> Views</h4>
-<ol class="org-ol"><li class="fragment none">Application<br/><p>
+<h4>Views</h4>
+<ul class="org-ul"><li class="fragment none">Application<br/><p>
 <a href="./app/views/">./app/views/</a>
 </p>
 
@@ -419,29 +418,29 @@ app/assets/javascripts/application.js
 </ul>
 </li>
 
-<li class="fragment none">Pages<br/><ol class="org-ol"><li class="fragment none">Home<br/><p>
+<li class="fragment none">Pages<br/><ul class="org-ul"><li class="fragment none">Home<br/><p>
 <a href="./app/views/pages/home.html.erb">./app/views/pages/home.html.erb</a>
 </p>
 
 <p>
 <a href="./app/views/pages/">./app/views/pages/</a>
 </p>
-</li></ol>
+</li></ul>
 </li>
 
 <li class="fragment none">Layouts<br/></li>
 
-<li class="fragment none">Partials<br/></li></ol>
+<li class="fragment none">Partials<br/></li></ul>
 
 
 </section>
 <section id="sec-3-3" >
 
-<h3><span class="section-number-3">3.3</span> Control</h3>
+<h3>Control</h3>
 </section>
 <section id="sec-3-3-1" >
 
-<h4><span class="section-number-4">3.3.1</span> Routes</h4>
+<h4>Routes</h4>
 <p>
 <a href="./app/views/">Views Directory</a>
 </p>
@@ -463,7 +462,7 @@ root 'pages#index'
 </section>
 <section id="sec-3-3-2" >
 
-<h4><span class="section-number-4">3.3.2</span> Controllers</h4>
+<h4>Controllers</h4>
 <p>
 <a href="./app/controllers/application_controller.rb">./app/controllers/application_controller.rb</a>
 </p>
@@ -478,15 +477,15 @@ root 'pages#index'
 <section>
 <section id="sec-4" >
 
-<h2><span class="section-number-2">4</span> Application skeleton BASICS</h2>
+<h2>Application skeleton BASICS</h2>
 </section>
 <section id="sec-4-1" >
 
-<h3><span class="section-number-3">4.1</span> Useful commands</h3>
+<h3>Useful commands</h3>
 </section>
 <section id="sec-4-1-1" >
 
-<h4><span class="section-number-4">4.1.1</span> Rake</h4>
+<h4>Rake</h4>
 <pre class="example">
 rake routes
 </pre>
@@ -495,7 +494,7 @@ rake routes
 </section>
 <section id="sec-4-1-2" >
 
-<h4><span class="section-number-4">4.1.2</span> Rails</h4>
+<h4>Rails</h4>
 <pre class="example">
 rails console
 </pre>
@@ -503,7 +502,7 @@ rails console
 </section>
 <section id="sec-4-2" >
 
-<h3><span class="section-number-3">4.2</span> Essential Files</h3>
+<h3>Essential Files</h3>
 <p>
 <a href="./Gemfile">Gemfile</a>
 </p>
@@ -511,7 +510,7 @@ rails console
 </section>
 <section id="sec-4-3" >
 
-<h3><span class="section-number-3">4.3</span> the following has now been defaulted into</h3>
+<h3>the following has now been defaulted into</h3>
 <p>
 DEV:edit <a href="./rails-new.sh">./rails-new.sh</a>
 </p>
@@ -523,7 +522,7 @@ DEV:edit <a href="./rails-new.sh">./rails-new.sh</a>
 </section>
 <section id="sec-4-3-1" >
 
-<h4><span class="section-number-4">4.3.1</span> Create the default skeletal application</h4>
+<h4>Create the default skeletal application</h4>
 <ul class="org-ul">
 <li><code>[X]</code> create scheduler application
 
@@ -603,8 +602,8 @@ bundle install --without production
 </section>
 <section id="sec-4-3-2" >
 
-<h4><span class="section-number-4">4.3.2</span> Set up Git and Heroku</h4>
-<ol class="org-ol"><li class="fragment none">Git<br/><ul class="org-ul">
+<h4>Set up Git and Heroku</h4>
+<ul class="org-ul"><li class="fragment none">Git<br/><ul class="org-ul">
 <li><code>[X]</code> initialize git repo
 
 <pre class="example">
@@ -660,7 +659,7 @@ heroku rename gensched
 </pre>
 </li>
 </ul>
-</li></ol>
+</li></ul>
 </section>
 </section>
 </div>
