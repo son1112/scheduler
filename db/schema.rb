@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623032110) do
+ActiveRecord::Schema.define(version: 20140623202809) do
 
   create_table "pages", force: true do |t|
     t.string   "index"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "shifts", force: true do |t|
+    t.string   "index"
+    t.string   "pickup"
+    t.string   "dropoff"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
