@@ -3,6 +3,7 @@
   Create a generic application for scheduling a service from a user's phone or 
   computer via the web (ie. delivery (laundry, beer, groceries)
 
+
 * Basic concept
 
   A user, from the web (via mobile or desktop/laptop), visits the application 
@@ -16,16 +17,105 @@
 
   [[http://guides.rubyonrails.org/active_record_basics.html][Users]] [[http://guides.rubyonrails.org/action_controller_overview.html][order and schedule]] services through a web-based [[http://guides.rubyonrails.org/action_view_overview.html][application]]. 
 
-  
+  This application displays a calendar and scheduling information along with 
+  basic operation information. One or more datetimes are selected from a 
+  controlled array of available times for service to be rendered.
 
 ** Model
+
+   Users/Admin, Services, Times, (Commercial Exchange)?
+
+*** Scaffolding
+
+    - [X] Disable scaffold stylesheet creation 
+
+      [[./config/application.rb]]
+
+       : config.generators do |g|
+       :   g.stylesheets false
+       : end
+
+    - [X] Generate a scaffold
+
+      : rails g scaffold Page index
+
+    - [X] migrate the database
+
+      : rake db:migrate
+
+*** Generating a Model      
+
 
 *** Users
 
 **** Devise
 
+     - [-] Install [[https://github.com/plataformatec/devise][Devise]]
+
+       - [X] add Devise gem to [[./Gemfile][Gemfile]] and bundle
+
+             : gem 'devise'
+	     : bundle 
+
+       - [X] run the devise generator
+
+	 : rails generate devise:install
+
+	 This generates a set of further instructions
+
+	 : Some setup you must do manually if you haven't yet:
+
+	 - [X] Ensure you have defined default url options in your environments 
+               files. 
+
+	    [[./config/environments/development.rb]]
+
+	   : config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+	 - [X] In production, :host should be set to the actual host of your application.
+
+	    [[./config/environments/production.rb]]
+
+	   : config.action_mailer.default_url_options = { host: 'gensched.herokuapp.com' }
+
+	 - [X]  Ensure you have defined root_url to *something* 
+
+	   [[./config/routes.rb]]
+
+	   : root 'pages#index'
+
+	   [[./app/views/pages/index.html.erb]]
+
+
+	 - [X]  Ensure you have flash messages  
+     
+	   [[./app/views/layouts/application.html.erb]]
+
+	   : <p class="notice"><%= notice %></p>
+	   : <p class="alert"><%= alert %></p>
+
+	 - [X] Copy Devise views (for customization):
+
+	   : rails g devise:views
+
+       - [X] Add Devise to a model
+
+	 : rails g devise MODEL
+
+	 : rails g devise User
+
+       - [ ] Configure the model
+
+       - [X] Migrate the database
+
+	 : rake db:migrate
+	 
+       
+
 *** Admin
 
+*** Service    
+*** Times    
 *** Commercial Exchange   
 
 
@@ -96,9 +186,11 @@
 
 *** Views
 
+    [[./app/views/]]
+
     - [X] add viewport
 
-      [[./app/views/layouts/application.html.erb][application.html.erb]]
+      [[./app/views/layouts/application.html.erb]]
 
       : <meta name="viewport" content="width=device-width, intial-scale=1.0">
 
@@ -111,7 +203,15 @@
 
 *** Routes
 
-    - [ ] create root path
+    [[./app/views/][Views Directory]]
+
+    [[./config/routes.rb]]
+
+    - [X] create root path
+
+      : root 'welcome#index'
+
+      : root 'pages#index'
 
 
 *** Controllers   
@@ -121,11 +221,19 @@
 
 
 
+** Useful commands
+
+*** Rake
+
+    : rake routes
+
 ** Essential Files
 
    [[./Gemfile][Gemfile]]
 
 ** the following has now been defaulted into
+
+   DEV:edit [[./rails-new.sh]]
 
    [[./rails-new]]
 

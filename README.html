@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="README"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-06-23T01:40+0000"/>
+<meta name="generated" content="2014-06-23T03:00+0000"/>
 <meta name="author" content="Ander"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -128,13 +128,17 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#sec-3-1">3.1 Model</a>
 <ul>
-<li><a href="#sec-3-1-1">3.1.1 Users</a>
+<li><a href="#sec-3-1-1">3.1.1 Scaffolding</a></li>
+<li><a href="#sec-3-1-2">3.1.2 Generating a Model</a></li>
+<li><a href="#sec-3-1-3">3.1.3 Users</a>
 <ul>
-<li><a href="#sec-3-1-1-1">3.1.1.1 Devise</a></li>
+<li><a href="#sec-3-1-3-1">3.1.3.1 Devise</a></li>
 </ul>
 </li>
-<li><a href="#sec-3-1-2">3.1.2 Admin</a></li>
-<li><a href="#sec-3-1-3">3.1.3 Commercial Exchange</a></li>
+<li><a href="#sec-3-1-4">3.1.4 Admin</a></li>
+<li><a href="#sec-3-1-5">3.1.5 Service</a></li>
+<li><a href="#sec-3-1-6">3.1.6 Times</a></li>
+<li><a href="#sec-3-1-7">3.1.7 Commercial Exchange</a></li>
 </ul>
 </li>
 <li><a href="#sec-3-2">3.2 View</a>
@@ -164,14 +168,19 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#sec-4">4 Application skeleton BASICS</a>
 <ul>
-<li><a href="#sec-4-1">4.1 Essential Files</a></li>
-<li><a href="#sec-4-2">4.2 the following has now been defaulted into</a>
+<li><a href="#sec-4-1">4.1 Useful commands</a>
 <ul>
-<li><a href="#sec-4-2-1">4.2.1 Create the default skeletal application</a></li>
-<li><a href="#sec-4-2-2">4.2.2 Set up Git and Heroku</a>
+<li><a href="#sec-4-1-1">4.1.1 Rake</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-2">4.2 Essential Files</a></li>
+<li><a href="#sec-4-3">4.3 the following has now been defaulted into</a>
 <ul>
-<li><a href="#sec-4-2-2-1">4.2.2.1 Git</a></li>
-<li><a href="#sec-4-2-2-2">4.2.2.2 Heroku</a></li>
+<li><a href="#sec-4-3-1">4.3.1 Create the default skeletal application</a></li>
+<li><a href="#sec-4-3-2">4.3.2 Set up Git and Heroku</a>
+<ul>
+<li><a href="#sec-4-3-2-1">4.3.2.1 Git</a></li>
+<li><a href="#sec-4-3-2-2">4.3.2.2 Heroku</a></li>
 </ul>
 </li>
 </ul>
@@ -191,6 +200,7 @@ for the JavaScript code in this tag.
   Create a generic application for scheduling a service from a user's phone or 
   computer via the web (ie. delivery (laundry, beer, groceries)
 </p>
+
 </div>
 
 </div>
@@ -220,8 +230,11 @@ for the JavaScript code in this tag.
 <p>
   <a href="http://guides.rubyonrails.org/active_record_basics.html">Users</a> <a href="http://guides.rubyonrails.org/action_controller_overview.html">order and schedule</a> services through a web-based <a href="http://guides.rubyonrails.org/action_view_overview.html">application</a>. 
 </p>
-
-
+<p>
+  This application displays a calendar and scheduling information along with 
+  basic operation information. One or more datetimes are selected from a 
+  controlled array of available times for service to be rendered.
+</p>
 
 </div>
 
@@ -230,30 +243,57 @@ for the JavaScript code in this tag.
 <div class="outline-text-3" id="text-3-1">
 
 
+<p>
+   Users/Admin, Services, Times, (Commercial Exchange)?
+</p>
 
 </div>
 
 <div id="outline-container-3-1-1" class="outline-4">
-<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> Users</h4>
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> Scaffolding</h4>
 <div class="outline-text-4" id="text-3-1-1">
 
 
+<ul>
+<li><code>[X]</code> Disable scaffold stylesheet creation 
 
-</div>
+<p>
+      <a href="./config/application.rb">./config/application.rb</a>
+</p>
+<pre class="example">
+config.generators do |g|
+  g.stylesheets false
+end
+</pre>
 
-<div id="outline-container-3-1-1-1" class="outline-5">
-<h5 id="sec-3-1-1-1"><span class="section-number-5">3.1.1.1</span> Devise</h5>
-<div class="outline-text-5" id="text-3-1-1-1">
+
+</li>
+<li><code>[X]</code> Generate a scaffold
+
+<pre class="example">
+rails g scaffold Page index
+</pre>
 
 
-</div>
+</li>
+<li><code>[X]</code> migrate the database
+
+<pre class="example">
+rake db:migrate
+</pre>
+
+</li>
+</ul>
+
+
 </div>
 
 </div>
 
 <div id="outline-container-3-1-2" class="outline-4">
-<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> Admin</h4>
+<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> Generating a Model</h4>
 <div class="outline-text-4" id="text-3-1-2">
+
 
 
 </div>
@@ -261,8 +301,178 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-3-1-3" class="outline-4">
-<h4 id="sec-3-1-3"><span class="section-number-4">3.1.3</span> Commercial Exchange</h4>
+<h4 id="sec-3-1-3"><span class="section-number-4">3.1.3</span> Users</h4>
 <div class="outline-text-4" id="text-3-1-3">
+
+
+
+</div>
+
+<div id="outline-container-3-1-3-1" class="outline-5">
+<h5 id="sec-3-1-3-1"><span class="section-number-5">3.1.3.1</span> Devise</h5>
+<div class="outline-text-5" id="text-3-1-3-1">
+
+
+<ul>
+<li><code>[-]</code> Install <a href="https://github.com/plataformatec/devise">Devise</a>
+
+<ul>
+<li><code>[X]</code> add Devise gem to <a href="./Gemfile">Gemfile</a> and bundle
+
+<pre class="example">
+gem 'devise'
+bundle 
+</pre>
+
+
+</li>
+<li><code>[X]</code> run the devise generator
+
+<pre class="example">
+rails generate devise:install
+</pre>
+
+
+<p>
+         This generates a set of further instructions
+</p>
+<pre class="example">
+Some setup you must do manually if you haven't yet:
+</pre>
+
+
+<ul>
+<li><code>[X]</code> Ensure you have defined default url options in your environments 
+               files. 
+
+<p>
+            <a href="./config/environments/development.rb">./config/environments/development.rb</a>
+</p>
+<pre class="example">
+config.action_mailer.default_url_options = { host: 'localhost:3000' }
+</pre>
+
+
+</li>
+<li><code>[X]</code> In production, :host should be set to the actual host of your application.
+
+<p>
+            <a href="./config/environments/production.rb">./config/environments/production.rb</a>
+</p>
+<pre class="example">
+config.action_mailer.default_url_options = { host: 'gensched.herokuapp.com' }
+</pre>
+
+
+</li>
+<li><code>[X]</code> Ensure you have defined root<sub>url</sub> to <b>something</b> 
+
+<p>
+           <a href="./config/routes.rb">./config/routes.rb</a>
+</p>
+<pre class="example">
+root 'pages#index'
+</pre>
+
+
+<p>
+           <a href="./app/views/pages/index.html.erb">./app/views/pages/index.html.erb</a>
+</p></li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+
+<ul>
+<li><code>[X]</code> Ensure you have flash messages  
+
+<p>     
+           <a href="./app/views/layouts/application.html.erb">./app/views/layouts/application.html.erb</a>
+</p>
+<pre class="example">
+&lt;p class="notice"&gt;&lt;%= notice %&gt;&lt;/p&gt;
+&lt;p class="alert"&gt;&lt;%= alert %&gt;&lt;/p&gt;
+</pre>
+
+
+</li>
+<li><code>[X]</code> Copy Devise views (for customization):
+
+<pre class="example">
+rails g devise:views
+</pre>
+
+
+</li>
+<li><code>[X]</code> Add Devise to a model
+</li>
+</ul>
+
+
+<pre class="example">
+rails g devise MODEL
+</pre>
+
+
+<pre class="example">
+rails g devise User
+</pre>
+
+
+<ul>
+<li><code>[&nbsp;]</code> Configure the model
+
+</li>
+<li><code>[X]</code> Migrate the database
+
+<pre class="example">
+rake db:migrate
+</pre>
+
+</li>
+</ul>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3-1-4" class="outline-4">
+<h4 id="sec-3-1-4"><span class="section-number-4">3.1.4</span> Admin</h4>
+<div class="outline-text-4" id="text-3-1-4">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-1-5" class="outline-4">
+<h4 id="sec-3-1-5"><span class="section-number-4">3.1.5</span> Service</h4>
+<div class="outline-text-4" id="text-3-1-5">
+
+</div>
+
+</div>
+
+<div id="outline-container-3-1-6" class="outline-4">
+<h4 id="sec-3-1-6"><span class="section-number-4">3.1.6</span> Times</h4>
+<div class="outline-text-4" id="text-3-1-6">
+
+</div>
+
+</div>
+
+<div id="outline-container-3-1-7" class="outline-4">
+<h4 id="sec-3-1-7"><span class="section-number-4">3.1.7</span> Commercial Exchange</h4>
+<div class="outline-text-4" id="text-3-1-7">
 
 
 
@@ -443,11 +653,14 @@ app/assets/javascripts/application.js
 <div class="outline-text-4" id="text-3-2-4">
 
 
+<p>
+    <a href="./app/views/">./app/views/</a>
+</p>
 <ul>
 <li><code>[X]</code> add viewport
 
 <p>
-      <a href="./app/views/layouts/application.html.erb">application.html.erb</a>
+      <a href="./app/views/layouts/application.html.erb">./app/views/layouts/application.html.erb</a>
 </p>
 <pre class="example">
 &lt;meta name="viewport" content="width=device-width, intial-scale=1.0"&gt;
@@ -494,8 +707,24 @@ app/assets/javascripts/application.js
 <div class="outline-text-4" id="text-3-3-1">
 
 
+<p>
+    <a href="./app/views/">Views Directory</a>
+</p>
+<p>
+    <a href="./config/routes.rb">./config/routes.rb</a>
+</p>
 <ul>
-<li><code>[&nbsp;]</code> create root path
+<li><code>[X]</code> create root path
+
+<pre class="example">
+root 'welcome#index'
+</pre>
+
+
+<pre class="example">
+root 'pages#index'
+</pre>
+
 </li>
 </ul>
 
@@ -528,8 +757,31 @@ app/assets/javascripts/application.js
 </div>
 
 <div id="outline-container-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Essential Files</h3>
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Useful commands</h3>
 <div class="outline-text-3" id="text-4-1">
+
+
+
+</div>
+
+<div id="outline-container-4-1-1" class="outline-4">
+<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> Rake</h4>
+<div class="outline-text-4" id="text-4-1-1">
+
+
+<pre class="example">
+rake routes
+</pre>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Essential Files</h3>
+<div class="outline-text-3" id="text-4-2">
 
 
 <p>
@@ -539,20 +791,23 @@ app/assets/javascripts/application.js
 
 </div>
 
-<div id="outline-container-4-2" class="outline-3">
-<h3 id="sec-4-2"><span class="section-number-3">4.2</span> the following has now been defaulted into</h3>
-<div class="outline-text-3" id="text-4-2">
+<div id="outline-container-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> the following has now been defaulted into</h3>
+<div class="outline-text-3" id="text-4-3">
 
 
+<p>
+   DEV:edit <a href="./rails-new.sh">./rails-new.sh</a>
+</p>
 <p>
    <a href="./rails-new">./rails-new</a>
 </p>
 
 </div>
 
-<div id="outline-container-4-2-1" class="outline-4">
-<h4 id="sec-4-2-1"><span class="section-number-4">4.2.1</span> Create the default skeletal application</h4>
-<div class="outline-text-4" id="text-4-2-1">
+<div id="outline-container-4-3-1" class="outline-4">
+<h4 id="sec-4-3-1"><span class="section-number-4">4.3.1</span> Create the default skeletal application</h4>
+<div class="outline-text-4" id="text-4-3-1">
 
 
 <ul>
@@ -644,17 +899,17 @@ bundle install --without production
 
 </div>
 
-<div id="outline-container-4-2-2" class="outline-4">
-<h4 id="sec-4-2-2"><span class="section-number-4">4.2.2</span> Set up Git and Heroku</h4>
-<div class="outline-text-4" id="text-4-2-2">
+<div id="outline-container-4-3-2" class="outline-4">
+<h4 id="sec-4-3-2"><span class="section-number-4">4.3.2</span> Set up Git and Heroku</h4>
+<div class="outline-text-4" id="text-4-3-2">
 
 
 
 </div>
 
-<div id="outline-container-4-2-2-1" class="outline-5">
-<h5 id="sec-4-2-2-1"><span class="section-number-5">4.2.2.1</span> Git</h5>
-<div class="outline-text-5" id="text-4-2-2-1">
+<div id="outline-container-4-3-2-1" class="outline-5">
+<h5 id="sec-4-3-2-1"><span class="section-number-5">4.3.2.1</span> Git</h5>
+<div class="outline-text-5" id="text-4-3-2-1">
 
 
 <ul>
@@ -706,9 +961,9 @@ git push -u origin master
 
 </div>
 
-<div id="outline-container-4-2-2-2" class="outline-5">
-<h5 id="sec-4-2-2-2"><span class="section-number-5">4.2.2.2</span> Heroku</h5>
-<div class="outline-text-5" id="text-4-2-2-2">
+<div id="outline-container-4-3-2-2" class="outline-5">
+<h5 id="sec-4-3-2-2"><span class="section-number-5">4.3.2.2</span> Heroku</h5>
+<div class="outline-text-5" id="text-4-3-2-2">
 
 
 <ul>

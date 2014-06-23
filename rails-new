@@ -11,7 +11,9 @@ STYLES=$ASS/stylesheets
 rails new $APP
 
 cd $APP
-cp $HOME/bin/rails-new.sh rails-new.sh
+ln -s $HOME/bin/rails-new.sh rails-new.sh
+cp rails-new.sh rails-new
+
 rm README.*
 echo $APPname "application" > README.org
 echo '' >> README.org

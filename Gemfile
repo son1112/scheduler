@@ -11,6 +11,7 @@ gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass'
 gem 'bcrypt'
+gem 'devise'
 gem 'pg'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'mail_form'
