@@ -1,7 +1,7 @@
-*Scheduler Application*
+* Scheduler Application
 
-Create a generic application for scheduling a service from a user's phone or 
-computer via the web (ie. delivery (laundry, beer, groceries)
+  Create a generic application for scheduling a service from a user's phone or 
+  computer via the web (ie. delivery (laundry, beer, groceries)
 
 * Basic concept
 
@@ -14,7 +14,9 @@ computer via the web (ie. delivery (laundry, beer, groceries)
 
 * ModelViewControl
 
-  [[http://guides.rubyonrails.org/active_record_basics.html][Users]] [[http://guides.rubyonrails.org/action_controller_overview.html][order]] services through an [[http://guides.rubyonrails.org/action_view_overview.html][application]]
+  [[http://guides.rubyonrails.org/active_record_basics.html][Users]] [[http://guides.rubyonrails.org/action_controller_overview.html][order and schedule]] services through a web-based [[http://guides.rubyonrails.org/action_view_overview.html][application]]. 
+
+  
 
 ** Model
 
@@ -36,15 +38,28 @@ computer via the web (ie. delivery (laundry, beer, groceries)
     - [ ] application.js
 
 
-*** Bootstrap
+*** Bootstrap-sass
     
     - [X] Create custom bootstrap stylesheet
+
+      [[./app/assets/stylesheets/bootstrap_and_customization.css.scss]]
       
-      : echo "@import 'bootsrap';" > app/assets/stylesheets/bootstrap_and_customization
+      : echo "@import 'bootsrap';" > app/assets/stylesheets/bootstrap_and_customization.css.scss
 
-    - [ ] Require Bootstrap's Javascript, after jquery_ujs 
+      *NOTE* Place new variables before "@import 'bootstrap'"
 
-      : app/assets/javascripts/application.js
+      - [X] Fonts
+
+	/EXAMPLE:/
+	: @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,700italic,700|Clicker+Script);
+
+      - [X] Variables
+
+	: $phill-grn: #3f8000;
+
+    - [X] Require Bootstrap's Javascript, after jquery_ujs 
+
+      [[./app/assets/javascripts/application.js]]
 
       : //= require jquery
       : //= require jquery_ujs
@@ -98,17 +113,21 @@ computer via the web (ie. delivery (laundry, beer, groceries)
 
     - [ ] create root path
 
+
 *** Controllers   
 
 
 * Application skeleton BASICS
 
 
+
+** Essential Files
+
+   [[./Gemfile][Gemfile]]
+
 ** the following has now been defaulted into
 
-   : ~/bin/rails-new.sh
-   OR
-   : ~/RAILS-dev/DEFAULT-NEW-APP.sh
+   [[./rails-new]]
 
 *** Create the default skeletal application
 
