@@ -50,12 +50,12 @@
 
       - [X] Fonts
 
-	/EXAMPLE:/
-	: @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,700italic,700|Clicker+Script);
+  	    /EXAMPLE:/
+	    : @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,700italic,700|Clicker+Script);
 
       - [X] Variables
 
-	: $phill-grn: #3f8000;
+	    : $phill-grn: #3f8000;
 
     - [X] Require Bootstrap's Javascript, after jquery_ujs 
 
