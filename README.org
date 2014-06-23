@@ -62,8 +62,15 @@ computer via the web (ie. delivery (laundry, beer, groceries)
    - [X] update README
 
      : rm README.rdoc
-     : ln -s $HOME/bin/rails-new.sh rails-new.sh
      : touch README.org
+
+   - [X] link to generic rails script 
+
+     For documentation and testing purpose of developing my default rails new 
+     bash script
+
+     : ln -s $HOME/bin/rails-new.sh rails-new.sh
+
 
    - [X] rename application.css to application.css.scss
 
