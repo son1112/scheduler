@@ -5,7 +5,11 @@ computer via the web (ie. delivery (laundry, beer, groceries)
 
 * Basic concept
 
-  
+  A user, from the web (via mobile or desktop/laptop), visits the application 
+  site for a specific service (laundry pickup/delivery), selects a 
+  service and a date&time. A request for the service/time is emailed
+  to admin. When approved, a confirmation email is returned and the service is 
+  planned for the appropriate time on the business side.
 
 * Application skeleton BASICS
 
@@ -70,11 +74,11 @@ computer via the web (ie. delivery (laundry, beer, groceries)
 
 **** Heroku
 
-     - [ ] Create and push a new heroku app
+     - [X] Create and push a new heroku app
 
        : heroku create
        : git push heroku master
        
-     - [ ] Rename the heroku app
+     - [X] Rename the heroku app
 
        : heroku rename gensched
