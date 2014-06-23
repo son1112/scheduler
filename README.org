@@ -14,15 +14,43 @@ computer via the web (ie. delivery (laundry, beer, groceries)
 
 * ModelViewControl
 
+  [[http://guides.rubyonrails.org/active_record_basics.html][Users]] [[http://guides.rubyonrails.org/action_controller_overview.html][order]] services through an [[http://guides.rubyonrails.org/action_view_overview.html][application]]
+
 ** Model
+
+*** Users
+
+**** Devise
+
+*** Admin
+
+*** Commercial Exchange   
 
 ** View
 
+*** Skrollr   
+
+    - [ ] add skrollr script
+
+    - [ ] application.js
+
+
 *** Bootstrap
     
-    - [X] create custom bootstrap stylesheet
+    - [X] Create custom bootstrap stylesheet
       
       : echo "@import 'bootsrap';" > app/assets/stylesheets/bootstrap_and_customization
+
+    - [ ] Require Bootstrap's Javascript, after jquery_ujs 
+
+      : app/assets/javascripts/application.js
+
+      : //= require jquery
+      : //= require jquery_ujs
+      : //= require bootstrap
+      : //= require turbolinks
+      : //= require_tree .
+
 
 *** Assets
 
@@ -30,8 +58,24 @@ computer via the web (ie. delivery (laundry, beer, groceries)
 
 **** Javascripts
 
+     - [X] Replace turbolinks with jquery-turbolinks
+
+           [[app/assets/javascripts/application.js]]
+
+       : app/assets/javascripts/application.js
+
+       - [X] remove turbolinks line
+
+	 : //= require turbolinks
+
+       - [X] add jquery.turbolinks under bootstrap
+
+	 : //= require bootstrap
+	 : //= require jquery.turbolinks
+
 **** Images   
 
+     - [ ] css background images 
 
 *** Views
 
@@ -49,9 +93,12 @@ computer via the web (ie. delivery (laundry, beer, groceries)
 
 * Application skeleton BASICS
 
+
 ** the following has now been defaulted into
 
-   : ~/bin/rails-new.sh/~/RAILS-dev/DEFAULT-NEW-APP.sh
+   : ~/bin/rails-new.sh
+   OR
+   : ~/RAILS-dev/DEFAULT-NEW-APP.sh
 
 *** Create the default skeletal application
 
