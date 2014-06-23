@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Index:</strong>
+  <%= @shift.index %>
+</p>
+
+<p>
+  <strong>Pickup:</strong>
+  <%= @shift.pickup %>
+</p>
+
+<p>
+  <strong>Dropoff:</strong>
+  <%= @shift.dropoff %>
+</p>
+
+<%= link_to 'Edit', edit_shift_path(@shift) %> |
+<%= link_to 'Back', shifts_path %>

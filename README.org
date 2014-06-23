@@ -20,10 +20,6 @@
   to admin. When approved, a confirmation email is returned and the service is 
   planned for the appropriate time on the business side.
 
-** Scheme
-
-   
-
 * ModelViewControl
 
   [[http://guides.rubyonrails.org/active_record_basics.html][Users]] [[http://guides.rubyonrails.org/action_controller_overview.html][order and schedule]] services through a web-based [[http://guides.rubyonrails.org/action_view_overview.html][application]]. 
@@ -34,37 +30,26 @@
 
 ** Model
 
-   Users/Admin, Services, Times, (Commercial Exchange)?
+   Each *page* will serve as a node for site structure.
 
-*** Scaffolding
+   A *user* will have many *shifts*, associated by id when scheduling requests.
 
-    - [X] Disable scaffold stylesheet creation 
+   *Admin* users will have access to greenlighting of scheduling requests.
+   
+   
 
-      [[./config/application.rb]]
+*** Page
 
-       : config.generators do |g|
-       :   g.stylesheets false
-       : end
+    - [X] generate page scaffolding
 
-    - [X] Generate a scaffold
-
-      EXAMPLE
       : rails g scaffold Page index
 
-    - [X] migrate the database
+**** Additional attributes/columns
 
-      : rake db:migrate
-
-
-*** Generating a Model      
-
-*** Pages
-
-    - [ ] generate page model
-
+     - [ ] index: string
       
 
-*** Users
+*** User
 
 **** Devise
 
@@ -130,11 +115,87 @@
 	 
        
 
-*** Admin
+**** Admin
+
+     - [ ] create a migration to add admin boolean to User model
+
+
+*** Shift    
+
+    - [ ] Generate Shift scaffold
+
+      : rails g scaffold Shift index pickup:string dropoff:string
+
+**** table
+
+     | shift   |             |                          |                                |
+     |---------+-------------+--------------------------+--------------------------------|
+     |         | id: integer | pickup: string?          | dropoff: string?               |
+     |---------+-------------+--------------------------+--------------------------------|
+     | example |           3 | Time.now.to_f.to_s       | Time.at(Time.now+60).to_f.to_s |
+     |         |           7 | Time.at(60*30).to_f.to_s | Time.at(90000000).to_f.to_s    |
+
+     - [ ] other attributes?
+
+     - [ ] use .to_f method to retain fractions of a second
+
+       : Time.now => 2014-06-23 20:02:16 +0000 
+       : Time.now.to_i => 1403553736
+       : Time.now.to_f => 1403553736.279851
+       
+     - [ ] convert time to float before string?
+       
+       because the string can be converted back and Time.at(float)
+       will return an actual time that can be used, whereas it seems
+       that a string "2014-06-23 20:02:16 +0000" might not be convertable
+       back to a time?
+
+       - [ ] use the time module
+
+	 - [ ] unsure if this is the appropriate place for it
+
+	   [[./config/application.rb]]
+
+	: require 'time'
+
+	 then
+	 
+	 : Time.parse('2014-06-23 20:02:16 +0000') => 2014-06-23 20:02:16 +0000 
+       
+       
+
+*** Commercial Exchange   
+
+
+*** Rails Generation
+
+**** Scaffolding
+
+     - [X] Disable scaffold stylesheet creation 
+
+       [[./config/application.rb]]
+
+       	: config.generators do |g|
+       	:   g.stylesheets false
+       	: end
+
+     - [X] Generate a scaffold
+
+       EXAMPLE
+       : rails g scaffold Page index
+
+     - [X] migrate the database
+
+       : rake db:migrate
+
+
+**** Generating a Model      
+
 
 *** Service    
-*** Times    
-*** Commercial Exchange   
+    
+    For now, I think it would make sense to look at it simply, accounting for a
+    single service that can be scheduled.
 
 
 ** View
@@ -216,11 +277,13 @@
 
 **** Pages
 
+     [[./app/views/pages/]]
+
 ***** Home
 
       [[./app/views/pages/home.html.erb]]
 
-      [[./app/views/pages/]]
+
 
 **** Layouts
 
@@ -246,6 +309,13 @@
 
     [[./app/controllers/pages_controller.rb]]
 
+
+* Other required services
+
+** Set up a mailer
+
+
+** commerce exchange
 
 * Application skeleton BASICS
 

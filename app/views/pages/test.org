@@ -1,0 +1,12 @@
+#+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/2.5.0/
+
+* This is just a test.
+
+  Testing reveal.js and org-reveal
+
+** Here is a picture:
+
+   [[../../assets/images/feetsand.jpg]]
+
+   or not.
+

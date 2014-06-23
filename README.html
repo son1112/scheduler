@@ -55,14 +55,7 @@ service and a date&amp;time. A request for the service/time is emailed
 to admin. When approved, a confirmation email is returned and the service is 
 planned for the appropriate time on the business side.
 </p>
-
 </section>
-<section id="sec-2-1" >
-
-<h3>Scheme</h3>
-</section>
-
-
 
 </section>
 <section>
@@ -84,66 +77,43 @@ controlled array of available times for service to be rendered.
 
 <h3>Model</h3>
 <p>
-Users/Admin, Services, Times, (Commercial Exchange)?
+Each <b>page</b> will serve as a node for site structure.
 </p>
+
+<p>
+A <b>user</b> will have many <b>shifts</b>, associated by id when scheduling requests.
+</p>
+
+<p>
+<b>Admin</b> users will have access to greenlighting of scheduling requests.
+</p>
+
+
 
 </section>
 <section id="sec-3-1-1" >
 
-<h4>Scaffolding</h4>
+<h4>Page</h4>
 <ul class="org-ul">
-<li><code>[X]</code> Disable scaffold stylesheet creation 
+<li><code>[X]</code> generate page scaffolding
 
-<p>
-<a href="./config/application.rb">./config/application.rb</a>
-</p>
-
-<pre class="example">
-config.generators do |g|
-  g.stylesheets false
-end
-</pre>
-</li>
-
-<li><code>[X]</code> Generate a scaffold
-
-<p>
-EXAMPLE
-</p>
 <pre class="example">
 rails g scaffold Page index
 </pre>
 </li>
+</ul>
 
-<li><code>[X]</code> migrate the database
-
-<pre class="example">
-rake db:migrate
-</pre>
+<ul class="org-ul"><li class="fragment none">Additional attributes/columns<br/><ul class="org-ul">
+<li><code>[&#xa0;]</code> index: string
 </li>
 </ul>
+</li></ul>
 
 
 </section>
 <section id="sec-3-1-2" >
 
-<h4>Generating a Model</h4>
-
-</section>
-<section id="sec-3-1-3" >
-
-<h4>Pages</h4>
-<ul class="org-ul">
-<li><code>[&#xa0;]</code> generate page model
-</li>
-</ul>
-
-
-
-</section>
-<section id="sec-3-1-4" >
-
-<h4>Users</h4>
+<h4>User</h4>
 <ul class="org-ul"><li class="fragment none">Devise<br/><ul class="org-ul">
 <li><code>[-]</code> Install <a href="https://github.com/plataformatec/devise">Devise</a>
 
@@ -256,27 +226,182 @@ rake db:migrate
 </pre>
 </li>
 </ul>
+</li>
+
+
+
+<li class="fragment none">Admin<br/><ul class="org-ul">
+<li><code>[&#xa0;]</code> create a migration to add admin boolean to User model
+</li>
+</ul>
+</li></ul>
+
+
+</section>
+<section id="sec-3-1-3" >
+
+<h4>Shift</h4>
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> Generate Shift scaffold
+
+<pre class="example">
+rails g scaffold Shift index pickup:string dropoff:string
+</pre>
+</li>
+</ul>
+
+<ul class="org-ul"><li class="fragment none">table<br/><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">shift</th>
+<th scope="col" class="right">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">id: integer</td>
+<td class="left">pickup: string?</td>
+<td class="left">dropoff: string?</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">example</td>
+<td class="right">3</td>
+<td class="left">Time.now.to<sub>f</sub>.to<sub>s</sub></td>
+<td class="left">Time.at(Time.now+60).to<sub>f</sub>.to<sub>s</sub></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">7</td>
+<td class="left">Time.at(60*30).to<sub>f</sub>.to<sub>s</sub></td>
+<td class="left">Time.at(90000000).to<sub>f</sub>.to<sub>s</sub></td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> other attributes?
+</li>
+
+<li><code>[&#xa0;]</code> use .to<sub>f</sub> method to retain fractions of a second
+
+<pre class="example">
+Time.now =&gt; 2014-06-23 20:02:16 +0000 
+Time.now.to_i =&gt; 1403553736
+Time.now.to_f =&gt; 1403553736.279851
+</pre>
+</li>
+
+<li><code>[&#xa0;]</code> convert time to float before string?
+
+<p>
+because the string can be converted back and Time.at(float)
+will return an actual time that can be used, whereas it seems
+that a string "2014-06-23 20:02:16 +0000" might not be convertable
+back to a time?
+</p>
+
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> use the time module
+
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> unsure if this is the appropriate place for it
+
+<p>
+<a href="./config/application.rb">./config/application.rb</a>
+</p>
+</li>
+</ul>
+<pre class="example">
+require 'time'
+</pre>
+
+<p>
+then
+</p>
+
+<pre class="example">
+Time.parse('2014-06-23 20:02:16 +0000') =&gt; 2014-06-23 20:02:16 +0000 
+</pre>
+</li>
+</ul>
+</li>
+</ul>
 </li></ul>
 
 
 
 </section>
+<section id="sec-3-1-4" >
+
+<h4>Commercial Exchange</h4>
+
+
+</section>
 <section id="sec-3-1-5" >
 
-<h4>Admin</h4>
+<h4>Rails Generation</h4>
+<ul class="org-ul"><li class="fragment none">Scaffolding<br/><ul class="org-ul">
+<li><code>[X]</code> Disable scaffold stylesheet creation 
+
+<p>
+<a href="./config/application.rb">./config/application.rb</a>
+</p>
+
+<pre class="example">
+config.generators do |g|
+  g.stylesheets false
+end
+</pre>
+</li>
+
+<li><code>[X]</code> Generate a scaffold
+
+<p>
+EXAMPLE
+</p>
+<pre class="example">
+rails g scaffold Page index
+</pre>
+</li>
+
+<li><code>[X]</code> migrate the database
+
+<pre class="example">
+rake db:migrate
+</pre>
+</li>
+</ul>
+</li>
+
+
+<li class="fragment none">Generating a Model<br/></li></ul>
+
 
 </section>
 <section id="sec-3-1-6" >
 
 <h4>Service</h4>
-</section>
-<section id="sec-3-1-7" >
-
-<h4>Times</h4>
-</section>
-<section id="sec-3-1-8" >
-
-<h4>Commercial Exchange</h4>
+<p>
+For now, I think it would make sense to look at it simply, accounting for a
+single service that can be scheduled.
+</p>
 
 
 </section>
@@ -418,15 +543,17 @@ app/assets/javascripts/application.js
 </ul>
 </li>
 
-<li class="fragment none">Pages<br/><ul class="org-ul"><li class="fragment none">Home<br/><p>
-<a href="./app/views/pages/home.html.erb">./app/views/pages/home.html.erb</a>
+<li class="fragment none">Pages<br/><p>
+<a href="./app/views/pages/">./app/views/pages/</a>
 </p>
 
-<p>
-<a href="./app/views/pages/">./app/views/pages/</a>
+<ul class="org-ul"><li class="fragment none">Home<br/><p>
+<a href="./app/views/pages/home.html.erb">./app/views/pages/home.html.erb</a>
 </p>
 </li></ul>
 </li>
+
+
 
 <li class="fragment none">Layouts<br/></li>
 
@@ -477,13 +604,30 @@ root 'pages#index'
 <section>
 <section id="sec-4" >
 
-<h2>Application skeleton BASICS</h2>
+<h2>Other required services</h2>
 </section>
 <section id="sec-4-1" >
 
+<h3>Set up a mailer</h3>
+
+
+</section>
+<section id="sec-4-2" >
+
+<h3>commerce exchange</h3>
+</section>
+
+</section>
+<section>
+<section id="sec-5" >
+
+<h2>Application skeleton BASICS</h2>
+</section>
+<section id="sec-5-1" >
+
 <h3>Useful commands</h3>
 </section>
-<section id="sec-4-1-1" >
+<section id="sec-5-1-1" >
 
 <h4>Rake</h4>
 <pre class="example">
@@ -492,7 +636,7 @@ rake routes
 
 
 </section>
-<section id="sec-4-1-2" >
+<section id="sec-5-1-2" >
 
 <h4>Rails</h4>
 <pre class="example">
@@ -500,7 +644,7 @@ rails console
 </pre>
 
 </section>
-<section id="sec-4-2" >
+<section id="sec-5-2" >
 
 <h3>Essential Files</h3>
 <p>
@@ -508,7 +652,7 @@ rails console
 </p>
 
 </section>
-<section id="sec-4-3" >
+<section id="sec-5-3" >
 
 <h3>the following has now been defaulted into</h3>
 <p>
@@ -520,7 +664,7 @@ DEV:edit <a href="./rails-new.sh">./rails-new.sh</a>
 </p>
 
 </section>
-<section id="sec-4-3-1" >
+<section id="sec-5-3-1" >
 
 <h4>Create the default skeletal application</h4>
 <ul class="org-ul">
@@ -600,7 +744,7 @@ bundle install --without production
 </ul>
 
 </section>
-<section id="sec-4-3-2" >
+<section id="sec-5-3-2" >
 
 <h4>Set up Git and Heroku</h4>
 <ul class="org-ul"><li class="fragment none">Git<br/><ul class="org-ul">
