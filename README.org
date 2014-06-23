@@ -20,7 +20,7 @@ computer via the web (ie. delivery (laundry, beer, groceries)
 
 *** Bootstrap
     
-    - [ ] create custom bootstrap stylesheet
+    - [X] create custom bootstrap stylesheet
       
       : echo "@import 'bootsrap';" > app/assets/stylesheets/bootstrap_and_customization
 
@@ -64,12 +64,13 @@ computer via the web (ie. delivery (laundry, beer, groceries)
      : rm README.rdoc
      : touch README.org
 
-   - [X] link to generic rails script 
+   - [X] copy generic rails script 
 
      For documentation and testing purpose of developing my default rails new 
      bash script
 
-     : ln -s $HOME/bin/rails-new.sh rails-new.sh
+     : ln -s $HOME/bin/rails-new.sh rails-new.sh 
+     : cp $HOME/bin/rails-new.sh rails-new 
 
 
    - [X] rename application.css to application.css.scss
