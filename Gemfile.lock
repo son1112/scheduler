@@ -134,6 +134,7 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     remotipart (1.2.1)
+    reveal-js-rails (0.0.1)
     safe_yaml (1.0.3)
     sass (3.2.19)
     sass-rails (4.0.3)
@@ -193,6 +194,7 @@ DEPENDENCIES
   rails (= 4.1.0)
   rails_12factor
   rails_admin
+  reveal-js-rails
   sass-rails (= 4.0.3)
   sdoc (~> 0.4.0)
   simple_form
