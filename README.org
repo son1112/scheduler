@@ -37,14 +37,21 @@
 
     - [X] Generate a scaffold
 
+      EXAMPLE
       : rails g scaffold Page index
 
     - [X] migrate the database
 
       : rake db:migrate
 
+
 *** Generating a Model      
 
+*** Pages
+
+    - [ ] generate page model
+
+      
 
 *** Users
 
@@ -186,6 +193,8 @@
 
 *** Views
 
+**** Application
+
     [[./app/views/]]
 
     - [X] add viewport
@@ -193,6 +202,14 @@
       [[./app/views/layouts/application.html.erb]]
 
       : <meta name="viewport" content="width=device-width, intial-scale=1.0">
+
+**** Pages
+
+***** Home
+
+      [[./app/views/pages/home.html.erb]]
+
+      [[./app/views/pages/]]
 
 **** Layouts
 
@@ -209,13 +226,14 @@
 
     - [X] create root path
 
-      : root 'welcome#index'
-
       : root 'pages#index'
 
 
 *** Controllers   
 
+    [[./app/controllers/application_controller.rb]]
+
+    [[./app/controllers/pages_controller.rb]]
 
 * Application skeleton BASICS
 
@@ -226,6 +244,11 @@
 *** Rake
 
     : rake routes
+
+
+*** Rails
+
+    : rails console
 
 ** Essential Files
 

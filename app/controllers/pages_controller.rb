@@ -5,6 +5,9 @@ class PagesController < ApplicationController
     @pages = Page.all
   end
 
+  def home
+  end
+
   def show
   end
 

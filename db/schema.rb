@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623025556) do
+ActiveRecord::Schema.define(version: 20140623032110) do
 
   create_table "pages", force: true do |t|
     t.string   "index"
