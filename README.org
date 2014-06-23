@@ -1,5 +1,7 @@
 * Scheduler Application
 
+  [[http://gensched.herokuapp.com]]
+
   Create a generic application for scheduling a service from a user's phone or 
   computer via the web (ie. delivery (laundry, beer, groceries)
 
