@@ -127,95 +127,132 @@
      While I am very interested in building this from scratch, I knew that there
      must be something already available as a gem. Enter [[https://github.com/bokmann/fullcalendar-rails][fullcalendar-rails]]:
 
-     Let's give it a shot.
+     Let's give it a [[*fullcalendar-rails][shot]].
 
-***** Install
+     Then I found fullcalendar-rails-engine
 
-     - [X] install
+     "Rails engine implementation of fullcalendar jQuery plugin.
+     Create, edit, delete, reschedule, resize events like google calendar."
 
-       : gem 'fullcalendar-rails
-       : bundle
+     https://github.com/vinsol/fullcalendar-rails-engine
 
-     - [X] require in the appropriate places
-
-       [[./app/assets/stylesheets/application.css.scss]]
-
-       : *= require fullcalendar
-
-       [[./app/assets/javascripts/application.js]]
-
-       : *= require fullcalendar.print
-
-     - [ ] You can also include the fullcalendar.print file in your css manifest:
-
-	 but as Ray Zane pointed out in issue #11, this will cause a problem if 
-	 you try to change the colors of events.
-
-	 An ideal solution, if you need a print stylesheet, is to create an 
-	 application-print.css.scss file and include this (and other 
-         print-related css) in it. You'll then need to add it to the precompile
-	 array in [[./config/application.rb]]:
-
-	 : config.assets.precompile += ['application-print.css']
-
-	 and then in your layouts where you need it, add:
-
-	 : <%= stylesheet_link_tag "application-print", :media => "print" %>
-
-	 While it's not needed for this library, the original javascript 
-         library's author also includes an adapter for integrating
-	 Google calendars as an event source:
-	 
-	 //= require gcal
-	 
-
+     This seems more full-featured and capable of meeting our needs.
      
+***** fullcalendar-rails-engine
 
-***** Usage
+      - [X] install
+	
+	: gem 'fullcalendar_engine'
+	: bundle install
+	: bundle exec rails g fullcalendar_engine:install
 
-      http://arshaw.com/fullcalendar/
+      - [X] Declare routes
 
-      - [X] The following script code should be placed in the head of your page
+	[[./config/routes.rb]]
 
-	in application page or specific view?
-	Trying in the head of [[./app/views/layouts/application.html.erb]]
+	: mount FullcalendarEngine::Engine => "/fullcalendar_engine"
 
-	: <script>
-        :   $(document).ready(function(){
-        :    $('#calendar').fullCalendar({
-	:       // put your options and callbacks here
-        :     })
-        :   });
-        : </script>
+      - [ ] Create Single Event
 
-      - [X] Relies on there being an element with an id of "calendar" in the 
-	body of your page. The calendar will be placed /inside/ this div:
+	: FullcalendarEngine::Event.create({ 
+        :     :title => 'title', 
+        :     :description => 'description', 
+        :     :starttime => Time.current, 
+        :     :endtime => Time.current + 10.minute
+        : })
+	
 
-	: <div id='calendar'></div>
+***** fullcalendar-rails
 
-	Attempting this at [[./app/views/pages/test.html.erb]]
+****** Install
 
-	After restarting the server, it works!
+      - [X] install
 
-      - [ ] To display events:
+       	: gem 'fullcalendar-rails
+       	: bundle
 
-	- [ ] Using Google Calendar
+      - [X] require in the appropriate places
 
-	  http://arshaw.com/fullcalendar/docs/google_calendar/
+       	[[./app/assets/stylesheets/application.css.scss]]
 
-	  FullCalendar can display events from a public Google Calendar. It can
-	  serve as a backend that manages and persistently stores event data 
-          (a feature that FullCalendar currently lacks).
+       	: *= require fullcalendar
+
+       	[[./app/assets/javascripts/application.js]]
+
+       	: *= require fullcalendar.print
+
+      - [ ] You can also include the fullcalendar.print file in your css manifest:
+
+	  but as Ray Zane pointed out in issue #11, this will cause a problem if 
+	  you try to change the colors of events.
+
+	  An ideal solution, if you need a print stylesheet, is to create an 
+	  application-print.css.scss file and include this (and other 
+          print-related css) in it. You'll then need to add it to the precompile
+	  array in [[./config/application.rb]]:
+
+	  : config.assets.precompile += ['application-print.css']
+
+	  and then in your layouts where you need it, add:
+
+	  : <%= stylesheet_link_tag "application-print", :media => "print" %>
+
+	  While it's not needed for this library, the original javascript 
+          library's author also includes an adapter for integrating
+	  Google calendars as an event source:
 	  
-	  So, this may not be what we want. It would be nice if the scheduled 
-          events could just be placed on a Google calendar...
-
-	- [ ] Using a standard JavaScript object that FullCalendar uses
-	  to store information about a calendar event.
-
-	  http://arshaw.com/fullcalendar/docs/event_data/
-
+	  //= require gcal
 	  
+
+      
+
+****** Usage
+
+       http://arshaw.com/fullcalendar/
+
+       - [X] The following script code should be placed in the head of your page
+
+	 in application page or specific view?
+	 Trying in the head of [[./app/views/layouts/application.html.erb]]
+
+	 : <script>
+         :   $(document).ready(function(){
+         :    $('#calendar').fullCalendar({
+	 :       // put your options and callbacks here
+         :     })
+         :   });
+         : </script>
+
+       - [X] Relies on there being an element with an id of "calendar" in the 
+	 body of your page. The calendar will be placed /inside/ this div:
+
+	 : <div id='calendar'></div>
+
+	 Attempting this at [[./app/views/pages/test.html.erb]]
+
+	 After restarting the server, it works!
+
+       - [ ] To display events:
+
+	 - [ ] Using Google Calendar
+
+	   http://arshaw.com/fullcalendar/docs/google_calendar/
+
+	   FullCalendar can display events from a public Google Calendar. It can
+	   serve as a backend that manages and persistently stores event data 
+           (a feature that FullCalendar currently lacks).
+	   
+	   So, this may not be what we want. It would be nice if the scheduled 
+           events could just be placed on a Google calendar...
+
+	 - [ ] Using a standard JavaScript object that FullCalendar uses
+	   to store information about a calendar event.
+
+	   http://arshaw.com/fullcalendar/docs/event_data/
+
+	   
+
+       
 
 **** Generation
 

@@ -16,3 +16,4 @@
 //= require turbolinks
 //= require fullcalendar
 //= require_tree .
+//= require fullcalendar_engine/application
